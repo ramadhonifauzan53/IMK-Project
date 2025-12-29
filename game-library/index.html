@@ -1,0 +1,393 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameBox - Your Ultimate Game Library</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/image-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/transitions.css" />
+    <link rel="stylesheet" href="css/account.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <h1>GameBox</h1>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="overlay"></div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li class="nav-icon">
+            <a href="wishlist.html" class="wishlist-link">
+              <i class="far fa-heart"></i>
+              <span class="desktop-only" id="wishlist-count">0</span>
+              <span class="mobile-only"
+                >Wishlist (<span id="mobile-wishlist-count">0</span>)</span
+              >
+            </a>
+          </li>
+          <li class="nav-icon">
+            <a href="cart.html" class="cart-link">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="desktop-only" id="cart-count">0</span>
+              <span class="mobile-only"
+                >Cart (<span id="mobile-cart-count">0</span>)</span
+              >
+            </a>
+          </li>
+          <li class="nav-account">
+            <div class="auth-buttons">
+              <a href="#" class="btn btn-login">Login</a>
+              <a href="#" class="btn btn-signup">Sign Up</a>
+            </div>
+            <div class="account-section">
+              <!-- Will be populated by JavaScript -->
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Discover Your Next Favorite Game</h1>
+          <p>
+            Explore a vast collection of games, track your progress, and connect
+            with other gamers.
+          </p>
+          <div class="hero-buttons">
+            <a href="games.html" class="btn btn-secondary">Browse Games</a>
+            <a href="#trending" class="btn btn-secondary">Trending Now</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-games" class="section">
+        <h2>Featured Games</h2>
+        <div class="game-grid">
+          <!-- Featured games will be dynamically loaded here -->
+        </div>
+      </section>
+
+      <section id="features" class="section features">
+        <h2>Why Choose GameBox?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-gamepad"></i>
+            <h3>Huge Collection</h3>
+            <p>Access thousands of games across all platforms and genres.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-trophy"></i>
+            <h3>Track Progress</h3>
+            <p>Keep track of your gaming achievements and progress.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h3>Community</h3>
+            <p>Connect with other gamers and share your experiences.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>GameBox</h3>
+          <p>Your ultimate game library and social platform for gamers.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 GameBox. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Login to Your Account</h2>
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              class="form-control"
+            />
+            <div class="forgot-password">
+              <a href="#">Forgot Password?</a>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="form-footer">
+            Don't have an account? <a href="#" id="showSignup">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Create Your Account</h2>
+        <form id="signupForm" class="auth-form">
+          <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input
+              type="password"
+              id="signup-password"
+              name="password"
+              required
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirmPassword"
+              required
+              class="form-control"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <div class="form-footer">
+            Already have an account? <a href="#" id="showLogin">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Global function for showing popup
+      window.showCustomPopup = function (title, message, type = "success") {
+        console.log("showCustomPopup called with:", { title, message, type });
+
+        // Create popup element if it doesn't exist
+        let popup = document.getElementById("custom-popup");
+        if (!popup) {
+          popup = document.createElement("div");
+          popup.id = "custom-popup";
+          popup.className = `custom-popup ${type}`;
+          popup.innerHTML = `
+          <div class="popup-content">
+            <div class="popup-icon">
+              <i class="fas"></i>
+            </div>
+            <div class="popup-text">
+              <h3 class="popup-title"></h3>
+              <p class="popup-message"></p>
+            </div>
+            <button class="popup-confirm">OK</button>
+          </div>
+        `;
+          document.body.appendChild(popup);
+        }
+
+        // Set icon based on type
+        const popupIcon = popup.querySelector(".popup-icon i");
+        const popupTitle = popup.querySelector(".popup-title");
+        const popupMessage = popup.querySelector(".popup-message");
+        const popupConfirm = popup.querySelector(".popup-confirm");
+
+        // Set icon and colors
+        let iconClass = "";
+        let backgroundColor = "";
+
+        switch (type) {
+          case "success":
+            iconClass = "fa-check-circle";
+            backgroundColor = "#4CAF50";
+            break;
+          case "error":
+            iconClass = "fa-times-circle";
+            backgroundColor = "#f44336";
+            break;
+          case "info":
+          default:
+            iconClass = "fa-info-circle";
+            backgroundColor = "#2196F3";
+        }
+
+        popupIcon.className = `fas ${iconClass}`;
+        popup.style.borderColor = backgroundColor;
+        popupConfirm.style.backgroundColor = backgroundColor;
+
+        // Set content
+        popupTitle.textContent = title;
+        popupMessage.textContent = message;
+
+        // Show popup
+        popup.classList.add("show");
+
+        // Close popup when clicking confirm button
+        const closePopup = function () {
+          popup.classList.remove("show");
+          popupConfirm.removeEventListener("click", closePopup);
+        };
+
+        popupConfirm.addEventListener("click", closePopup);
+
+        // Close when clicking outside content
+        const closeOnOutsideClick = function (e) {
+          if (e.target === popup) {
+            closePopup();
+            window.removeEventListener("click", closeOnOutsideClick);
+          }
+        };
+
+        window.addEventListener("click", closeOnOutsideClick);
+
+        // Auto close after 5 seconds
+        setTimeout(closePopup, 5000);
+      };
+    </script>
+
+    <!-- Core Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/page-transitions.js"></script>
+
+    <script>
+      // Initialize everything when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM fully loaded and parsed");
+
+        // Initialize auth module
+        if (typeof Auth !== "undefined") {
+          console.log("Initializing Auth module...");
+          Auth.init();
+
+          // Manually trigger click events for login/signup buttons
+          const loginBtn = document.querySelector(".btn-login");
+          const signupBtn = document.querySelector(".btn-signup");
+
+          if (loginBtn) {
+            loginBtn.addEventListener("click", function (e) {
+              e.preventDefault();
+              console.log("Login button clicked");
+              const loginModal = document.getElementById("loginModal");
+              if (loginModal) {
+                loginModal.style.display = "flex";
+                document.body.style.overflow = "hidden";
+              }
+            });
+          }
+
+          if (signupBtn) {
+            signupBtn.addEventListener("click", function (e) {
+              e.preventDefault();
+              console.log("Signup button clicked");
+              const signupModal = document.getElementById("signupModal");
+              if (signupModal) {
+                signupModal.style.display = "flex";
+                document.body.style.overflow = "hidden";
+              }
+            });
+          }
+
+          // Toggle between login and signup modals
+          const showSignupLink = document.getElementById("showSignup");
+          const showLoginLink = document.getElementById("showLogin");
+          const loginModal = document.getElementById("loginModal");
+          const signupModal = document.getElementById("signupModal");
+
+          if (showSignupLink && loginModal && signupModal) {
+            showSignupLink.addEventListener("click", function (e) {
+              e.preventDefault();
+              console.log("Show signup link clicked");
+              loginModal.style.display = "none";
+              signupModal.style.display = "flex";
+            });
+          }
+
+          if (showLoginLink && loginModal && signupModal) {
+            showLoginLink.addEventListener("click", function (e) {
+              e.preventDefault();
+              console.log("Show login link clicked");
+              signupModal.style.display = "none";
+              loginModal.style.display = "flex";
+            });
+          }
+
+          // Close modals when clicking the close button
+          const closeButtons = document.querySelectorAll(".close-modal");
+          closeButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+              console.log("Close button clicked");
+              const modal = this.closest(".modal");
+              if (modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+              }
+            });
+          });
+
+          // Close modals when clicking outside
+          window.addEventListener("click", function (event) {
+            if (event.target.classList.contains("modal")) {
+              console.log("Clicked outside modal");
+              event.target.style.display = "none";
+              document.body.style.overflow = "auto";
+            }
+          });
+        } else {
+          console.error(
+            "Auth module not found. Make sure auth.js is properly loaded."
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

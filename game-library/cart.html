@@ -1,0 +1,94 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart - GameBox</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/cart-styles.css" />
+    <link rel="stylesheet" href="css/transitions.css" />
+  </head>
+  <body class="dark-theme">
+    <header>
+      <nav>
+        <div class="logo">
+          <i class="fas fa-gamepad"></i>
+          <h1>GameBox</h1>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="games.html">Games</a>
+          <a href="wishlist.html"
+            >Wishlist <span id="wishlist-count">0</span></a
+          >
+          <a href="cart.html" class="cart-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+          </a>
+          <div class="user-section">
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="cart-container">
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-items" class="cart-items">
+          <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">Rp 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (10%)</span>
+            <span id="tax">Rp 0</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">Rp 0</span>
+          </div>
+          <button id="checkout-btn" class="btn btn-primary">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+      <div class="modal-content payment-modal">
+        <span class="close-modal">&times;</span>
+        <h2>Complete Your Payment</h2>
+        <div class="payment-details">
+          <p>Please scan the QR code below to complete your payment</p>
+          <div id="qrcode" class="qrcode-container"></div>
+          <div class="payment-info">
+            <p>Total Amount: <strong id="payment-amount">Rp 0</strong></p>
+            <p>Payment Method: <strong>QRIS</strong></p>
+            <p>
+              Status: <span id="payment-status">Waiting for payment...</span>
+            </p>
+          </div>
+          <button id="confirm-payment" class="btn btn-primary">
+            I've Made the Payment
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- QRCode.js library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/page-transitions.js"></script>
+  </body>
+</html>
